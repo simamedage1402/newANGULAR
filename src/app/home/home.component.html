@@ -1,0 +1,101 @@
+
+
+<!-- <div *ngFor="let item of productlist ;let i = index" [style.background-color]="rowColor(item, i)" >
+    {{item.id}}
+    {{item.name}}
+    {{item.data |json}}
+
+    
+</div> -->
+
+<!-- <ng-container *ngFor="let item of productlist; let i = index">
+    <tr *ngIf="isEven(i); else oddRow">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.data | json}}</td> < Displaying data as JSON for demonstration -->
+    <!-- </tr>
+
+    <ng-template #oddRow>
+      <tr class="odd-row">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.data | json}}</td> <Displaying data as JSON for demonstration -->
+      <!-- </tr>
+    </ng-template>
+  </ng-container> --> -
+
+  <div>
+    <h2>Even Items</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of evenItems">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.data?.color}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div>
+    <h2>Odd Items</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of oddItems">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.data?.color}}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+
+ <!-- Form -->  
+ 
+
+<form [formGroup]="simpleform" (ngSubmit)="submitbutton()" class="form-container">
+  <h1>Simple form</h1>
+  <div class="form-group">
+    <label for="id">ID</label>
+    <input type="text" formControlName="id" id="id">
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" id="name">
+  </div>
+  <button type="submit" class="submit-btn">Submit</button>
+</form>
+
+<!-- Table -->
+<table *ngIf="formData" class="table-container">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of formData">
+      <td>{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <!-- <td><button (click)="editItem(i)">Edit</button></td> 
+      <td><button (click)="deleteItem(i)">Delete</button></td> -->
+    </tr>
+  </tbody>
+</table>
